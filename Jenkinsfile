@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  triggers {
+        cron '00 21 * * 1-5' // Runs at 21:00 on every day-of-week from Monday through Friday
+    }
+
   environment {
     PYTHON_DIR = "${env.WORKSPACE}/python"  // Use the same Python path as first pipeline
     PYTHON_URL = "https://github.com/indygreg/python-build-standalone/releases/download/20240107/cpython-3.11.7+20240107-x86_64-unknown-linux-gnu-install_only.tar.gz"
